@@ -8,19 +8,62 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
-    }
+	var body: some View {
+		Group {
+			VerticalContentView()
+			HorizontalContentView()
+		}
+	}
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+struct VerticalContentView: View {
+	var body: some View {
+		VStack {
+			VStack {
+				Image(systemName: "arrow.down")
+					.imageScale(.large)
+					.foregroundColor(.accentColor)
+				Image(systemName: "arrow.down")
+					.imageScale(.large)
+					.foregroundColor(.accentColor)
+				Image(systemName: "arrow.down")
+					.imageScale(.large)
+					.foregroundColor(.accentColor)
+			}
+			Text("Этот экран отрисовывается вертикально")
+		}
+		.padding()
+	}
+}
+
+struct HorizontalContentView: View {
+	var body: some View {
+		VStack {
+			HStack {
+				Image(systemName: "arrow.right")
+					.imageScale(.large)
+					.foregroundColor(.accentColor)
+				Image(systemName: "arrow.right")
+					.imageScale(.large)
+					.foregroundColor(.accentColor)
+				Image(systemName: "arrow.right")
+					.imageScale(.large)
+					.foregroundColor(.accentColor)
+			}
+			Text("Этот экран отрисовывается горизонтально")
+		}
+		.padding()
+	}
+}
+
+struct PreviewProviderPortraitContentView: PreviewProvider {
+	static var previews: some View {
+		Group {
+			VerticalContentView()
+				.previewInterfaceOrientation(.portrait)
+
+			HorizontalContentView()
+				.previewInterfaceOrientation(.landscapeRight)
+		}
+	}
 }
